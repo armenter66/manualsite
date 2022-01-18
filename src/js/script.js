@@ -43,7 +43,7 @@ function makeSlider( ) {
 
 const sliderRun = makeSlider();
 
-
+// HAMBURGER MENU -------------------
 function HamburgerMenu() {
     this.hamburgerBtn = document.querySelector('.hamburger');
     this.menuBlock = document.querySelector('.menu');
@@ -66,3 +66,31 @@ HamburgerMenu.prototype.closeMenu = function() {
 }
 
 const hamburger = new HamburgerMenu();
+
+
+function Modals() {
+    this.btns = Array.from(document.querySelectorAll('a'));
+    this.modalsOverlay = document.querySelector('.overlaymodal')
+    this.closeEl = document.querySelector('.modal__close');
+
+
+    this.getPopUp();
+    this.closeModals();
+}
+
+Modals.prototype.getPopUp = function(){
+    this.btns.forEach( (e) => {
+        e.addEventListener('click', (el) => {
+            el.preventDefault();
+            this.modalsOverlay.classList.add('add');
+        })
+    }) 
+}
+
+Modals.prototype.closeModals = function() {
+    this.closeEl.addEventListener('click', ()=> {
+        this.modalsOverlay.classList.remove('add');
+    })
+}
+
+const modals = new Modals();
